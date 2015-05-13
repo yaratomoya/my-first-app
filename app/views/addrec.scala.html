@@ -1,7 +1,20 @@
+@(taskList: List[Task])
+
 <html>
     <body>
     @common("レコード追加"){
     	<h1>レコードを追加しました</h1>
+    	<h1>レコード一覧</h1>
+    	@if(taskList.isEmpty()){
+        	Taskは一件もありません
+        }else{
+        	<ul>
+        	@for(task <- taskList){
+        		<li>@task.name</li>
+        		<li>@task.period</li>
+        	}
+        	</ul>
+        }
     }
     </body>
 </html>

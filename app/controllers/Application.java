@@ -34,7 +34,9 @@ public class Application extends Controller {
     	pro.price=1000;
     	pro.save();
 
-    	return ok(addrec.render());
+    	List<Task> taskList=Task.find.all();
+
+    	return ok(addrec.render(taskList));
     }
 
 }
