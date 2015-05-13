@@ -23,20 +23,20 @@ public class Application extends Controller {
     }
 
     public static Result addrec(){
-    	Task task=new Task();
-    	Products pro=new Products();
+    	Random rnd = new Random();
 
-    	task.name="Pizzaを食べる";
-    	task.period=new Date();
-    	task.save();
+        Task task   = new Task();
+        task.name   = "ピザを" + rnd.nextInt(10) + "枚食べる";
+        task.period = new Date();
+        task.save();
 
-    	pro.name="Pizza";
-    	pro.price=1000;
-    	pro.save();
 
     	List<Task> taskList=Task.find.all();
+    	String now=task.name;
+    	Integer cnt=taskList.size();
+    	List<Task> taskList2=Task.find.where().eq("name", "ピザを5枚食べる").findList();
 
-    	return ok(addrec.render(taskList));
+    	return ok(addrec.render(taskList, now, cnt, taskList2));
     }
 
 }

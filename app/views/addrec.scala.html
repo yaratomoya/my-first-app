@@ -1,17 +1,18 @@
-@(taskList: List[Task])
+@(taskList: List[Task], now: String, cnt: Integer, taskList2: List[Task])
 
 <html>
     <body>
     @common("レコード追加"){
     	<h1>レコードを追加しました</h1>
+    	<h1>今回作ったタスクは「@now」です。</h1>
+		<h1>これまでに作ったタスクの数は「@cnt」です。</h1>
     	<h1>レコード一覧</h1>
     	@if(taskList.isEmpty()){
         	Taskは一件もありません
         }else{
         	<ul>
-        	@for(task <- taskList){
+        	@for(task <- taskList2){
         		<li>@task.name</li>
-        		<li>@task.period</li>
         	}
         	</ul>
         }
