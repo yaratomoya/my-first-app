@@ -14,6 +14,15 @@ public class Application extends Controller {
     }
 
     public static Result tasks(){
+    	List<String> taskList=Arrays.asList("foo", "bar", "baz", "<strong>Pizza</strong>", "<script>alert('hello');</script>");
+    	return ok(tasks.render(taskList));
+    }
+
+    public static Result helps(){
+    	return ok(helps.render());
+    }
+
+    public static Result addrec(){
     	Task task=new Task();
     	Products pro=new Products();
 
@@ -25,12 +34,7 @@ public class Application extends Controller {
     	pro.price=1000;
     	pro.save();
 
-    	List<String> taskList=Arrays.asList("foo", "bar", "baz", "<strong>Pizza</strong>", "<script>alert('hello');</script>");
-    	return ok(tasks.render(taskList));
-    }
-
-    public static Result helps(){
-    	return ok(helps.render());
+    	return ok(addrec.render());
     }
 
 }
