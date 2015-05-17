@@ -20,7 +20,10 @@
         }else{
         	<ul>
         	@for(task <- taskList){
-        		<li>@task.name</li>
+        		<form action="@routes.Application.deleteTask()" method="POST">
+        		<li>@task.name</li><br>
+        		<input type="button" value="Delete" />
+        		</form>
         	}
         	</ul>
         }

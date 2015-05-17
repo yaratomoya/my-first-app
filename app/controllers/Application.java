@@ -43,4 +43,10 @@ public class Application extends Controller {
     	}
     }
 
+    public static Result deleteTask(){
+    	Task deleteTask=Task.find.byId(1);
+    	deleteTask.delete();
+    	return redirect(routes.Application.addrec());
+    }
+
 }
