@@ -27,26 +27,15 @@ public class Application extends Controller {
     }
 
     public static Result addrec(){
-    	Random rnd = new Random();
-
-        Task task   = new Task();
-        task.name   = "ピザを" + rnd.nextInt(10) + "枚食べる";
-        task.period = new Date();
-        task.save();
-
-
     	List<Task> taskList=Task.find.all();
-    	String now=task.name;
-    	Integer cnt=taskList.size();
-    	List<Task> taskList2=Task.find.where().eq("name", "ピザを5枚食べる").findList();
-
-    	return ok(addrec.render(taskList, now, cnt, taskList2, taskForm));
+    	return ok(addrec.render(taskList, taskForm));
     }
 
     public static Result createTask(){
-    	Form<Task> form = Form.form(Task.class).bindFromRequest();
+    	Form<Task> form = taskForm.bindFromRequest();
     	if(form.hasErrors()){
-    		return badRequest(form.errorsAsJson());
+    		List<Task> taskList=Task.find.all();
+    		return badRequest(addrec.render(taskList, form));
     	}else{
     		Task newTask=form.get();
     		newTask.save();

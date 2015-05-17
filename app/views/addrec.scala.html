@@ -1,4 +1,4 @@
-@(taskList: List[Task], now: String, cnt: Integer, taskList2: List[Task], taskForm: Form[Task])
+@(taskList: List[Task], taskForm: Form[Task])
 @import helper._
 
 <html>
@@ -6,14 +6,14 @@
     @common("レコード追加"){
     	<h2>Add a new task</h2>
 		@form(routes.Application.createTask()){
-			@inputText(taskForm("name"))
-        	@inputDate(taskForm("period"))
+			@inputText(taskForm("name"), '_label -> "タスク名")
+        	@inputDate(taskForm("period"), '_label -> "期限")
         	<input type="submit" value="Create" />
         }
 
-    	<h1>レコードを追加しました</h1>
-    	<h1>今回作ったタスクは「@now」です。</h1>
-		<h1>これまでに作ったタスクの数は「@cnt」です。</h1>
+    	@for(error <- taskForm("name").errors){
+    		<p>@Messages(error.message)</p>
+    	}
     	<h1>レコード一覧</h1>
     	@if(taskList.isEmpty()){
         	Taskは一件もありません
