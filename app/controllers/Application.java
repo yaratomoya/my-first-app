@@ -18,7 +18,7 @@ public class Application extends Controller {
 
     public static Result tasks(){
     	List<String> taskList=Arrays.asList("foo", "bar", "baz", "<strong>Pizza</strong>", "<script>alert('hello');</script>");
-    	flash("foo", "pizza");
+    	session("foo", "aaa");
     	return ok(tasks.render(taskList));
     }
 
@@ -44,8 +44,8 @@ public class Application extends Controller {
     }
 
     public static Result deleteTask(){
-    	Task deleteTask=Task.find.byId(1);
-    	deleteTask.delete();
+    	Task task=Task.find.byId(1);
+    	task.delete();
     	return redirect(routes.Application.addrec());
     }
 
