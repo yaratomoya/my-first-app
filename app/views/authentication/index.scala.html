@@ -10,5 +10,11 @@
 			@inputPassword(loginForm("password"))
 			<input type="submit" value="Login">
 		}
+
+		@if(loginForm.hasGlobalErrors){
+			<p class="error">
+			@loginForm.globalError.message
+			</p>
+		}
 	</body>
 </html>
