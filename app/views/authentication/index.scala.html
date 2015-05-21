@@ -4,6 +4,7 @@
 
 <html>
 	<body>
+	@common("ログイン画面"){
 		<h1>ログインフォーム</h1>
 		@form(routes.Authentication.authenticate()){
 			@inputText(loginForm("username"))
@@ -16,5 +17,6 @@
 			@loginForm.globalError.message
 			</p>
 		}
+	}
 	</body>
 </html>
