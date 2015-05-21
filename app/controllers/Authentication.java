@@ -1,5 +1,6 @@
 package controllers;
 
+import models.User;
 import play.mvc.*;
 import play.data.*;
 import views.html.authentication.*;
@@ -17,7 +18,7 @@ public class Authentication extends Controller{
 		}
 
 		private Boolean authenticate(String username, String password){
-			return (username.equals("yara") && password.equals("tomo4522"));
+			return User.authenticate(username, password);
 		}
 	}
 
